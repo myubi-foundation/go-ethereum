@@ -63,7 +63,8 @@ services:
             - ETH_NAME={{.EthName}}
             - BLOCK_TRANSFORMER={{.Transformer}}{{if .VHost}}
             - VIRTUAL_HOST={{.VHost}}
-            - VIRTUAL_PORT=4000{{end}}
+			- VIRTUAL_PORT=4000{{end}}
+			- LETSENCRYPT_HOST={{.VHost}}
         volumes:
             - {{.Datadir}}:/opt/app/.ethereum
             - {{.DBDir}}:/var/lib/postgresql/data

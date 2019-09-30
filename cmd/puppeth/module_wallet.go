@@ -69,7 +69,8 @@ services:
       - NODE_PORT={{.NodePort}}/tcp
       - STATS={{.Ethstats}}{{if .VHost}}
       - VIRTUAL_HOST={{.VHost}}
-      - VIRTUAL_PORT=80{{end}}
+	  - VIRTUAL_PORT=80{{end}}
+	  - LETSENCRYPT_HOST={{.VHost}}
     logging:
       driver: "json-file"
       options:
