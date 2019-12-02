@@ -43,7 +43,7 @@ services:
     container_name: {{.Network}}_nginx_1
     ports:
       - "{{.Port}}:80"
-      - "{{.Port}}:443"
+      - "443:443"
     volumes:
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
