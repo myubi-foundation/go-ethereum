@@ -45,7 +45,7 @@ services:
       - "{{.Port}}:80"
       - "{{.Port}}:443"
     volumes:
-	  - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
       - "/var/run/docker.sock:/tmp/docker.sock:ro"
