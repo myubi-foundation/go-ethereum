@@ -54,7 +54,7 @@ services:
     restart: always
 
     letsencrypt-nginx-proxy-companion:
-	restart: always
+    restart: always
     image: jrcs/letsencrypt-nginx-proxy-companion
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
