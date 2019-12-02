@@ -42,7 +42,8 @@ services:
     image: {{.Network}}/nginx
     container_name: {{.Network}}_nginx_1
     ports:
-      - "{{.Port}}:80"
+	  - "{{.Port}}:80"
+      - "{{.Port}}:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     logging:
@@ -50,7 +51,15 @@ services:
       options:
         max-size: "1m"
         max-file: "10"
-    restart: always
+	restart: always
+
+    letsencrypt-nginx-proxy-companion:
+	restart: always
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    volumes_from:
+      - "nginx"
 `
 
 // deployNginx deploys a new nginx reverse-proxy container to expose one or more

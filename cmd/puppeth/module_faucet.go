@@ -73,7 +73,8 @@ services:
       - CAPTCHA_SECRET={{.CaptchaSecret}}
       - NO_AUTH={{.NoAuth}}{{if .VHost}}
       - VIRTUAL_HOST={{.VHost}}
-      - VIRTUAL_PORT=8080{{end}}
+	  - VIRTUAL_PORT=8080{{end}}
+      - LETSENCRYPT_HOST={{.VHost}}
     logging:
       driver: "json-file"
       options:
