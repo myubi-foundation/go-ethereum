@@ -43,9 +43,13 @@ services:
     container_name: {{.Network}}_nginx_1
     ports:
       - "{{.Port}}:80"
-      - "443:443"
+      - "{{.Port}}:443"
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+	  - /var/run/docker.sock:/tmp/docker.sock:ro
+      - "/etc/nginx/vhost.d"
+      - "/usr/share/nginx/html"
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "/etc/nginx/certs"
     logging:
       driver: "json-file"
       options:
@@ -53,7 +57,7 @@ services:
         max-file: "10"
     restart: always
 
-    letsencrypt-nginx-proxy-companion:
+  letsencrypt-nginx-proxy-companion:
     restart: always
     image: jrcs/letsencrypt-nginx-proxy-companion
     volumes:
